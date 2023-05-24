@@ -1,0 +1,2 @@
+#!/bin/fish
+oci --query 'data[*].{name: "display-name",ip: "public-ip"}' compute instance list-vnics -c (cat ~/.oci/compartment_ocid)

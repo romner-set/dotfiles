@@ -1,0 +1,2 @@
+#!/bin/fish
+jq -r ".[] | select(.name | startswith(\"$argv\")) | .ip" /run/user/1000/.oci

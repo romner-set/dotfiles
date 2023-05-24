@@ -1,0 +1,6 @@
+#!/bin/fish
+
+set progress (math (playerctl metadata -f 'round({{position}}*100/{{mpris:length}})'))
+
+dunstify -a "MEDIA" (playerctl metadata -f '{{artist}} ~ {{title}}
+{{status}} @{{playerName}} [{{duration(position)}}/{{duration(mpris:length)}}]') -h int:value:"$progress" -i audio-volume-high-symbolic -r 2594 -u normal

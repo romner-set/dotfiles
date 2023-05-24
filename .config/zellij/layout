@@ -1,0 +1,36 @@
+layout {
+    pane size=1 borderless=true {
+        plugin location="zellij:tab-bar"
+    }
+
+    pane split_direction="vertical" {
+      pane split_direction="horizontal" {
+        pane split_direction="vertical" size=9 {
+          pane command="tty-clock" size=38 {
+            args "-C" "6"
+          }
+          pane command="cmatrix" {
+            args "-C" "cyan"
+          }
+        }
+        pane command="sh" {
+          focus true
+          args "-c" "nvim; exec fish"
+        }
+        pane command="sh" size=8 {
+          args "-c" "cava; exec fish"
+        }
+      }
+
+      pane split_direction="horizontal" {
+        pane command="btop"
+        pane command="sh" size=24 {
+          args "-c" "neofetch; exec fish"
+        }
+      }
+    }
+
+    pane size=2 borderless=true {
+        plugin location="zellij:status-bar"
+    }
+}

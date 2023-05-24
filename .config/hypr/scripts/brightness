@@ -1,0 +1,4 @@
+#!/bin/sh
+brightnessctl s $1
+brightness=$(brightnessctl g)
+dunstify -a "BRIGHTNESS" "Brightness changed to $(($brightness*100/255))% [${brightness}]" -h int:value:"$(($brightness*100/255))" -i display-brightness-symbolic -r 2593 -u normal

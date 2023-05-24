@@ -1,0 +1,13 @@
+#!/bin/fish
+
+set -ge SAFE_VOLUME
+
+if set -q SAFE_VOLUME
+  set -Ue SAFE_VOLUME
+else
+  set -Ux SAFE_VOLUME 1
+  set vol (wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2}')
+  test $vol -gt 1 && wpctl set-volume @DEFAULT_AUDIO_SINK@ 1
+end
+
+dunstify -a "VOLUME" "Volume limit $(set -q SAFE_VOLUME; and echo en; or echo dis)abled" -i audio-volume-high-symbolic -r 2594 -u normal

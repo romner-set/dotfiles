@@ -1,0 +1,5 @@
+#!/bin/fish
+set -ge SAFE_VOLUME
+wpctl set-volume -l 0"$SAFE_VOLUME" @DEFAULT_AUDIO_SINK@ $argv
+
+dunstify -a "VOLUME" "$(pactl get-sink-volume @DEFAULT_SINK@ | perl -pe 's|, *|\n|; s|Volume: ||; s|: .*? /|:|g; s|t:|t: |; s|/ (.*?dB)|[\1]|g' | head -2)" -h int:value:"$volume" -i audio-volume-high-symbolic -r 2594 -u normal

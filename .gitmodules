@@ -1,0 +1,21 @@
+[submodule ".kvantum-themes/catppuccin"]
+	path = .kvantum-themes/catppuccin
+	url = https://github.com/catppuccin/Kvantum
+[submodule ".config/nvim"]
+	path = .config/nvim
+	url = https://github.com/AstroNvim/AstroNvim
+[submodule "src/external/Hyprland"]
+	path = src/external/Hyprland
+	url = https://github.com/hyprwm/Hyprland
+[submodule "src/external/linux-vt-setcolors"]
+	path = src/external/linux-vt-setcolors
+	url = https://github.com/evanpurkhiser/linux-vt-setcolors
+[submodule "src/external/linux"]
+	path = src/external/linux
+	url = git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
+[submodule "src/external/void-packages"]
+	path = src/external/void-packages
+	url = https://github.com/void-linux/void-packages
+[submodule "src/external/plymouth-theme-arch-elegant"]
+	path = src/external/plymouth-theme-arch-elegant
+	url = https://github.com/murkl/plymouth-theme-arch-elegant

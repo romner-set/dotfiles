@@ -1,0 +1,201 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 0,
+  "margin-left": 10,
+  "margin-right": 10,
+  "margin-top": 10,
+  "modules-left": [
+    "clock",
+    "temperature",
+    "disk",
+    "memory",
+    "cpu"
+  ],
+  "modules-center": ["gamemode","hyprland/window"],
+  "modules-right": [
+    "tray",
+    "custom/media",
+    "network",
+    "bluetooth",
+    //"custom/keyboard",
+    //"user",
+    "backlight",
+    "pulseaudio",
+    //"custom/updates",
+    //"custom/power",
+    "battery",
+    "wlr/workspaces"
+  ],
+
+  "hyprland/window": {
+    "format": "{}"
+  },
+
+  "wlr/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "on-click": "activate",
+    //"format": "{icon}",
+    "persistent_workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": [],
+      "7": [],
+      "8": [],
+      "9": [],
+      "10": []
+    }
+  },
+
+  "custom/updates": {
+    "exec": "paru -Sy; paru -Qua | count",
+    "interval": 900,
+    "format": " {}"
+  },
+
+  "custom/power": {
+    "exec": "cat /sys/class/power_supply/BAT1/power_now 2> /dev/null | numfmt --to-unit=1000000 --format %.3fW",
+    "interval": 5,
+    "format": "{}"
+  },
+
+  "custom/keyboard": {
+    "exec": "cat /home/main/.kbd-pipe",
+    "restart-interval": 0.1,
+    "format": " {}"
+  },
+
+  "custom/media": {
+    "format": "{icon}{}",
+    "return-type": "json",
+    "format-icons": {
+        "Playing": " ",
+        "Paused": " "
+    },
+    "max-length":70,
+    "exec": "playerctl -a metadata --format '{\"text\": \"{{playerName}}: {{artist}} ~ {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+    "on-click": "playerctl play-pause"
+  },
+
+  "bluetooth": {
+	  "format": " {status}",
+	  "format-connected": " {device_alias}",
+	  "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+	  // "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
+	  "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+	  "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+	  "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+	  "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+  },
+/*
+  "bluetooth": {
+	  // "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
+	  "format": " {status}",
+	  "format-disabled": "", // an empty format will hide the module
+	  "format-connected": " {num_connections} connected",
+	  "tooltip-format": "{controller_alias}\t{controller_address}",
+	  "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+	  "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+  },*/
+
+  "tray": {
+    "icon-size": 13,
+    "spacing": 10
+  },
+
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{icon} {percent}%",
+    "format-icons": ["", "", ""],
+    "on-scroll-up": "brightnessctl set 1%+",
+    "on-scroll-down": "brightnessctl set 1%-",
+    "min-length": 6
+  },
+
+  "battery": {
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 20
+    },
+    "format": "{icon} {capacity}% -{power}W",
+    "format-charging": " {capacity}% {power}W",
+    "format-plugged": " {capacity}% {power}W",
+    "format-alt": "{time} {icon}",
+    "format-icons": ["", "", "", "", "", "", "", "", "", "", ""]
+  },
+
+  "clock": {
+    "format": "{: %H:%M:%S   %Y-%m-%d}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "interval": 1
+  },
+
+  "network": {
+    "format-wifi": "直 {essid}",
+    "format-ethernet": " {essid}",
+    "format-linked": "{ifname} (No IP) ",
+    "format-disconnected": "睊 Disconnected",
+    "tooltip-format-wifi": "Signal Strength: {signalStrength}% | Down Speed: {bandwidthDownBits}, Up Speed: {bandwidthUpBits}",
+    "on-click": "wifi4wofi"
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}% {format_source}",
+    "format-muted": "ﱝ Muted",
+    "format-source": "",
+    "format-source-muted": "",
+    "on-click": "/home/main/.config/hypr/scripts/volume_ctl.sh mute",
+    "scroll-step": 1,
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", "墳", ""]
+    }
+  },
+
+  "disk": {
+    "format": "{used} 󰋊 {percentage_used}%"
+  },
+  "cpu": {
+     "format": " {avg_frequency}GHz {icon} {usage}%",
+     "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
+     "interval": 1
+  },
+
+  "memory": {
+    "interval": 1,
+    "format": "{used:0.1f}G/{total:0.1f}G "
+  },
+  "temperature": {
+    "format": "{temperatureC}°C "
+  },
+
+  "gamemode": {
+    "format": "{glyph}",
+    "format-alt": "{glyph} {count}",
+    "glyph": "",
+    "hide-not-running": true,
+    "use-icon": true,
+    "icon-name": "input-gaming-symbolic",
+    "icon-spacing": 4,
+    "icon-size": 20,
+    "tooltip": true,
+    "tooltip-format": "Games running: {count}"
+  },
+
+  "user": {
+    "format": "↑{work_H}:{work_M}:{work_S}",
+    "interval": 1,
+    "height": 30,
+    "width": 30,
+    "icon": true
+  }
+}

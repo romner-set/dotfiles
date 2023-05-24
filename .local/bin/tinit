@@ -1,0 +1,16 @@
+#!/bin/sh
+
+sudo setcolors ~/.config/tty-colorscheme
+
+tmux -f /home/main/.tmux-conf new-session "sleep 0.5; tty-clock -cC 6" \; \
+split-window -h "btop" \; \
+split-window -v -l 25 "neofetch --config /home/main/.config/neofetch/config-tty.conf; fish" \; \
+select-pane -t 0 \; \
+split-window -v -l 57 "nvim; fish" \; \
+select-pane -t 0 \; \
+split-window -h -l 85 "cmatrix -C cyan" \; \
+select-pane -t 2 \; \
+split-window -v -l 6 \; \
+select-pane -t 3 \;
+
+sudo setcolors

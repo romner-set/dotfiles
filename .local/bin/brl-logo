@@ -1,0 +1,9 @@
+#!/bin/bash
+. /bedrock/share/common-code
+print_logo "$(brl version)"
+echo " Kernel: $(uname -r)"
+echo " Kernel compiled for:"
+echo "   Hostname: $(hostname)"
+echo "   Model: $(cat /sys/devices/virtual/dmi/id/product_name) $(cat /sys/devices/virtual/dmi/id/product_version)"
+echo "   CPU: $(awk -F': ' '/model name/ {printf $2; exit}' '/proc/cpuinfo' | cut -f1 -d'w')"
+

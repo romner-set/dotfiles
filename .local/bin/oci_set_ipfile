@@ -1,0 +1,2 @@
+#!/bin/fish
+oci_get_ips | tee /run/user/1000/.oci

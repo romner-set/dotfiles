@@ -1,0 +1,28 @@
+#!/usr/bin/fish
+
+set KERNEL_VERSION "$argv"
+
+if test $hostname = "Artemis"
+  set ROOT_UUID eeb70329-812e-4d0b-934e-fb16919f00c6 
+  set SWAP_UUID 702fcf33-d2a5-4317-8797-7f1ce229818d
+else
+  set ROOT_UUID 351c8ccc-e1e2-46a8-802a-41532b8dd739 
+  set SWAP_UUID ab3f9cfe-a807-462b-9a87-cc1035cbaac6 
+end
+
+set OPTIONS "root=UUID=$ROOT_UUID rootflags=ssd,space_cache=v2,subvol=@ resume=UUID=$SWAP_UUID rw initrd=/initramfs-$KERNEL_VERSION.img blacklist=nouveau nouveau.modeset=0 initrd=/amd-ucode.img fbcon nodefer mem_encrypt=on"
+#set OPTIONS "$OPTIONS quiet loglevel=0" # fbcon nodefer"
+
+if test $hostname = "Artemis"
+  set OPTIONS "$OPTIONS amd_iommu=on iommu=pt vfio_iommu_type1.allow_unsafe_interrupts=1 kvm.ignore_msrs=1 vfio-pci.ids=10de:2182,10de:1aeb,10de:1aec,10de:1aed" # Artemis VFIO
+else if test $hostname = "Hyperion"
+  set OPTIONS "$OPTIONS amd_iommu=on iommu=pt vfio_iommu_type1.allow_unsafe_interrupts=1 kvm.ignore_msrs=1" # video=efifb:off vfio-pci.ids=1002:1638,1002:1637,1022:15df,1022:1639,1022:15e2,1022:15e3"
+#else
+  #set OPTIONS "$OPTIONS nvidia.modeset=1 nvidia_drm.modeset=1"
+end
+
+#echo Setting options:
+#echo $OPTIONS
+#echo
+
+sudo efibootmgr -c -d /dev/nvme0n1 -p1 -L "$hostname System [$KERNEL_VERSION]" -l "/vmlinuz-$KERNEL_VERSION" -u "$OPTIONS"

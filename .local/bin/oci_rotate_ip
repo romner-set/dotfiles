@@ -1,0 +1,16 @@
+#!/bin/fish
+set ip (oci_get_ip $argv)
+echo Getting public IP...
+set public_id (oci --raw-output --query 'data.id' network public-ip get --public-ip-address $ip)
+echo Getting associated private IP...
+set private_id (oci --raw-output --query 'data."assigned-entity-id"' network public-ip get --public-ip-id $public_id)
+
+echo Deleting public IP $public_id...
+oci network public-ip delete --public-ip-id $public_id --force
+echo Getting new public IP...
+set new_ip (oci --raw-output --query 'data."ip-address"' network public-ip create -c (cat ~/.oci/compartment_ocid) --lifetime EPHEMERAL --display-name "$argv" --private-ip-id $private_id)
+echo New IP is: $new_ip
+echo Writing output to file...
+set new_file (jq --arg name "$argv" --arg ip "$new_ip" 'map((select(.name | startswith($name)) | .ip) |= $ip)' /run/user/1000/.oci)
+echo $new_file > /run/user/1000/.oci
+echo done

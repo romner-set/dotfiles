@@ -1,0 +1,3 @@
+function rapid_charge_STATUS --wraps=sudo\ bash\ -c\ \"echo\ \'\\_SB.PCI0.LPC0.EC0.QCHO\'\ \>\ /proc/acpi/call\ \>\ /dev/null\"\ \&\&\ sudo\ cat\ /proc/acpi/call\;\ printf\ \'\\n\' --wraps=sudo\ bash\ -c\ \"echo\ \'\\_SB.PCI0.LPC0.EC0.QCHO\'\ \>\ /proc/acpi/call\"\ \&\&\ sudo\ cat\ /proc/acpi/call\;\ printf\ \'\\n\' --description alias\ rapid_charge_STATUS=sudo\ bash\ -c\ \"echo\ \'\\_SB.PCI0.LPC0.EC0.QCHO\'\ \>\ /proc/acpi/call\"\ \&\&\ sudo\ cat\ /proc/acpi/call\;\ printf\ \'\\n\'
+  sudo bash -c "echo '\_SB.PCI0.LPC0.EC0.QCHO' > /proc/acpi/call" && sudo cat /proc/acpi/call; printf '\n' $argv; 
+end

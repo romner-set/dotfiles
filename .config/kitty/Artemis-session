@@ -1,0 +1,46 @@
+layout vertical
+enabled_layouts vertical,stack,grid
+launch --title ar-btop fish -c 'sleep 1; btop; exec fish'
+launch --title at-btop fish -c 'sleep 1; ssh root@192.168.1.155 -tp32998 "btop; fish"; exec fish'
+launch fish -c 'sleep 1; cava; exec fish'
+resize_window shorter 20
+
+new_tab musikcube
+layout vertical
+enabled_layouts vertical,stack,grid
+launch fish -c 'sleep 1; btop;      exec fish'
+launch fish -c 'sleep 1; musikcube; exec fish'
+launch fish -c 'sleep 1; cava;      exec fish'
+resize_window shorter 20
+
+new_tab misc
+layout vertical
+enabled_layouts vertical,stack,grid
+launch fish -c 'sleep 1; btop; exec fish'
+launch fish
+launch fish -c 'sleep 1; cava; exec fish'
+resize_window shorter 20
+
+new_tab athena
+layout vertical
+enabled_layouts vertical,stack,grid
+launch fish -c 'sleep 1; ssh root@192.168.1.155 -tp32998 "btop; fish"; exec fish'
+launch fish -c 'sleep 1; ssh root@192.168.1.155 -p32998; exec fish'
+launch fish -c 'sleep 1; cava; exec fish'
+resize_window shorter 20
+
+new_tab vm1
+layout vertical
+enabled_layouts vertical,stack,grid
+launch fish -c 'sleep 1; sshx vm1 -t "btop; fish"; exec fish'
+launch fish -c 'sleep 1; sshx vm1; exec fish'
+launch fish -c 'sleep 1; cava; exec fish'
+resize_window shorter 20
+
+new_tab vm2
+layout vertical
+enabled_layouts vertical,stack,grid
+launch fish -c 'sleep 1; sshx vm2 -t "btop; fish"; exec fish'
+launch fish -c 'sleep 1; sshx vm2; exec fish'
+launch fish -c 'sleep 1; cava; exec fish'
+resize_window shorter 20

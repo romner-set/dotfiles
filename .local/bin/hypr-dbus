@@ -1,0 +1,6 @@
+#!/bin/sh
+sleep 1
+killall xdg-desktop-portal-hyprland
+killall xdg-desktop-portal
+/arch/usr/libexec/xdg-desktop-portal-hyprland &
+/arch/usr/libexec/xdg-desktop-portal &

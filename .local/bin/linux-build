@@ -1,0 +1,71 @@
+#!/bin/fish
+
+set cdir (pwd)
+cd /home/main/src/external/linux
+set KERNELV "$(make kernelversion)-custom-$(string lower $hostname)"
+
+if test "$argv" != "--nobuild";
+  echo Fetching repo...
+  git fetch
+
+  if git rev-list HEAD...origin/master --count;
+    if read_confirm "No updates found, rebuild anyway?";
+      exit 1
+    end
+  end
+
+  echo Pulling new changes...
+  git pull --recurse-submodules
+
+  echo "Copying config..."
+  sudo make mrproper
+  cp ../(string lower $hostname)-config .config
+
+  # echo Preparing bootscreen...
+  # echo 'text 700,350 "' > logo; brl-logo 2> /dev/null >> logo; echo '"' >> logo
+  # magick \( \( -size 1080x1920 gradient:blue-cyan -rotate -90 \) -fill black -draw "rectangle 5,5 1915,1075" \) -size 1915x1075 xc:black -font "FreeMono" -pointsize 24 -fill white -draw @logo png:- | pngtopnm | ppmquant 224 | pnmtoplainpnm > drivers/video/logo/logo_linux_clut224.ppm 
+
+  echo Storing new modules...
+  sudo ln -sf /home/main/.config/modprobed.db.d/$hostname /home/main/.config/modprobed.db
+  sudo modprobed-db store
+  sudo make localmodconfig
+
+  echo Compiling linux-$KERNELV...
+  sudo touch .scmversion
+  sudo make all -j(nproc)
+
+  while test -e arch/x86_64/boot/bzImage = 1;
+    if test 1 = (read_confirm "Kernel failed to build! Retry?");
+      sudo make all -j(nproc)
+    end
+  end
+
+  echo Installing headers...
+  sudo make headers_install ARCH=x86_64 INSTALL_HDR_PATH=/usr
+
+  echo Installing modules...
+  sudo rm -rf /lib/modules/$KERNELV/
+  sudo make INSTALL_MOD_STRIP=1 modules_install
+end
+
+echo Backing up /boot/...
+sudo mkdir -p "/boot-backup/$KERNELV"
+sudo mv /boot/* "/boot-backup/$KERNELV"
+
+echo Moving new kernel to /boot/...
+sudo cp .config "/boot/config-$KERNELV"
+sudo cp arch/x86_64/boot/bzImage "/boot/vmlinuz-$KERNELV"
+sudo cp drivers/video/logo/logo_linux_clut224.ppm "/boot/logo-$KERNELV"
+
+#echo Updating microcode...
+#sudo mkdir -p /tmp/amd-ucode/kernel/x86/microcode
+#sudo sh -c 'cat /bedrock/strata/gentoo/lib/firmware/amd-ucode/microcode_amd*.bin > /tmp/amd-ucode/kernel/x86/microcode/AuthenticAMD.bin'
+#sudo sh -c 'echo /tmp/amd-ucode/kernel/x86/microcode/AuthenticAMD.bin | bsdcpio -o -H newc -R 0:0 > /boot/amd-ucode.img'
+
+echo Building initramfs...
+sudo dracut -H --xz --kernel-image "/boot/vmlinuz-$KERNELV" --kver "$KERNELV"
+
+# echo Updating EFI...
+# /home/main/.local/bin/efibootmgr-update "$KERNELV"
+
+cd $cdir

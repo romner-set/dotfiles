@@ -1,0 +1,14 @@
+#!/usr/bin/fish
+set address (hyprctl activewindow -j | jq -r '.address')
+hyprctl setprop address:$address alpha $argv lock
+hyprctl setprop address:$address alphainactive $argv lock
+
+if test $argv -lt 1.0
+  hyprctl setprop address:$address forcenoblur 1 lock
+else
+  hyprctl setprop address:$address forcenoblur 0 lock
+end
+
+set opacity (math $argv\*100)
+
+dunstify -a "OPACITY" "Opacity changed to $opacity%" -h int:value:"$opacity" -i display-brightness-symbolic -r 2593 -u normal
