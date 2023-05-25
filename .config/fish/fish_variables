@@ -9,7 +9,6 @@ SETUVAR --export EDITOR:nvim
 SETUVAR --export ELM_DISPLAY:wl
 SETUVAR --export ELM_accel:none
 SETUVAR --export EVAS_FB_DEV:/dev/fb0
-SETUVAR --export GBM_BACKEND:nvidia
 SETUVAR --export GCM_CREDENTIAL_STORE:plaintext
 SETUVAR --export GDK_BACKEND:wayland
 SETUVAR --export GDK_SCALE:1
@@ -22,7 +21,6 @@ SETUVAR --export LANG:en_US\x2eUTF\x2d8
 SETUVAR --export LANGUAGE:en_US\x2eUTF\x2d8
 SETUVAR --export LC_ALL:\x1d
 SETUVAR --export LIBSEAT_BACKEND:logind
-SETUVAR --export LIBVA_DRIVER_NAME:nvidia
 SETUVAR --export MANGOHUD_CONFIG:fps_limit\x3d60
 SETUVAR --export NO_AT_BRIGDE:1
 SETUVAR --export OBSIDIAN_USE_WAYLAND:1
@@ -36,7 +34,6 @@ SETUVAR --export QT_STYLE_OVERRIDE:kvantum
 SETUVAR --export QT_WAYLAND_DISABLE_WINDOWDECORATION:1
 SETUVAR --export REPO:\x1d
 SETUVAR --export RUST_BACKTRACE:1
-SETUVAR --export SAFE_VOLUME:1
 SETUVAR --export SAL_USE_VCLPLUGIN:gtk3
 SETUVAR --export SDL_VIDEODRIVER:x11
 SETUVAR --export TERM:xterm\x2d256color
@@ -50,7 +47,6 @@ SETUVAR --export XDG_RUNTIME_DIR:/tmp/1000
 SETUVAR --export XDG_SESSION_DESKTOP:Hyprland
 SETUVAR --export XDG_SESSION_TYPE:wayland
 SETUVAR --export _JAVA_AWT_WM_NONREPARENTING:1
-SETUVAR --export __GLX_VENDOR_LIBRARY_NAME:nvidia
 SETUVAR --export __GL_VRR_ALLOWED:0
 SETUVAR __fish_initialized:3400
 SETUVAR _fisher_upgraded_to_4_4:\x1d
