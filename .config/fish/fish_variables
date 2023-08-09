@@ -2,17 +2,15 @@
 # VERSION: 3.0
 SETUVAR --export 1:0
 SETUVAR --export ACCEPT_KEYWORDS:\x7ex86
+SETUVAR --export ANDROID_SDK_ROOT:/opt/android\x2dsdk
 SETUVAR --export APACHE_RUN_DIR:/home/main/src/2IT/WEB/
-SETUVAR --export CLUTTER_BACKEND:wayland
 SETUVAR --export DESKTOP_SESSION:plasma
 SETUVAR --export EDITOR:nvim
-SETUVAR --export ELM_DISPLAY:wl
 SETUVAR --export ELM_accel:none
 SETUVAR --export EVAS_FB_DEV:/dev/fb0
 SETUVAR --export GCM_CREDENTIAL_STORE:plaintext
-SETUVAR --export GDK_BACKEND:wayland
 SETUVAR --export GDK_SCALE:1
-SETUVAR --export GTK_THEME:Sweet\x2dDark
+SETUVAR --export --path GOPATH:/home/main/\x2ego
 SETUVAR --export HYPRLAND_LOCK:0
 SETUVAR --export HYPRLAND_LOCk:\x1d
 SETUVAR --export HYPRLAND_SHELL_EXIT:0
@@ -27,28 +25,16 @@ SETUVAR --export OBSIDIAN_USE_WAYLAND:1
 SETUVAR --export --path PKG_CONFIG_PATH:/bedrock/strata/arch/usr/lib/pkgconfig/
 SETUVAR --export PROTON_BATTLEYE_RUNTIME:\x7e/\x2elocal/share/Steam/steamapps/common/Proton\x20BattlEye\x20Runtime/
 SETUVAR --export PROTON_USE_WINED3D11:1
-SETUVAR --export QT_AUTO_SCREEN_SCALE_FACTOR:1
-SETUVAR --export QT_QPA_PLATFORM:wayland\x2degl\x3bwayland\x3bxcb
-SETUVAR --export QT_QPA_PLATFORMTHEME:qt5ct
 SETUVAR --export QT_STYLE_OVERRIDE:kvantum
-SETUVAR --export QT_WAYLAND_DISABLE_WINDOWDECORATION:1
 SETUVAR --export REPO:\x1d
 SETUVAR --export RUST_BACKTRACE:1
 SETUVAR --export SAFE_VOLUME:1
 SETUVAR --export SAL_USE_VCLPLUGIN:gtk3
-SETUVAR --export SDL_VIDEODRIVER:x11
 SETUVAR --export TERM:xterm\x2d256color
 SETUVAR --export UNMOUNT:0
 SETUVAR --export WANBLK:0
 SETUVAR --export WINEDEBUG:\x2dall\x2c\x2bfps
-SETUVAR --export WLR_NO_HARDWARE_CURSORS:1
-SETUVAR --export XCURSOR_SIZE:24
-SETUVAR --export XDG_CURRENT_DESKTOP:Hyprland
-SETUVAR --export XDG_RUNTIME_DIR:/tmp/1000
-SETUVAR --export XDG_SESSION_DESKTOP:Hyprland
-SETUVAR --export XDG_SESSION_TYPE:wayland
-SETUVAR --export _JAVA_AWT_WM_NONREPARENTING:1
-SETUVAR --export __GL_VRR_ALLOWED:0
+SETUVAR --export XDG_RUNTIME_DIR:/run/user/1000
 SETUVAR __fish_initialized:3400
 SETUVAR _fisher_upgraded_to_4_4:\x1d
 SETUVAR fish_color_autosuggestion:969896
@@ -89,5 +75,5 @@ SETUVAR fish_pager_color_selected_background:\x2d\x2dbackground\x3dbrblack
 SETUVAR fish_pager_color_selected_completion:\x1d
 SETUVAR fish_pager_color_selected_description:\x1d
 SETUVAR fish_pager_color_selected_prefix:\x1d
-SETUVAR fish_user_paths:/home/main/src/tetris\x2drs/target/release\x1e/opt/cuda/bin\x1e/home/main/\x2econfig/rofi/scripts\x1e/home/main/\x2ecargo/bin\x1e/home/main/\x2elocal/bin
+SETUVAR fish_user_paths:/usr/lib/jvm/java\x2d11\x2dopenjdk/bin\x1e/opt/android\x2dsdk/tools/bin\x1e/home/main/src/tetris\x2drs/target/release\x1e/home/main/\x2econfig/rofi/scripts\x1e/home/main/\x2ecargo/bin\x1e/home/main/\x2elocal/bin
 SETUVAR --export logind:logind
