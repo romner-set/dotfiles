@@ -25,14 +25,14 @@
     //"custom/updates",
     //"custom/power",
     "battery",
-    "wlr/workspaces"
+    "hyprland/workspaces"
   ],
 
   "hyprland/window": {
     "format": "{}"
   },
 
-  "wlr/workspaces": {
+  "hyprland/workspaces": {
     "disable-scroll": true,
     "all-outputs": true,
     "on-click": "activate",

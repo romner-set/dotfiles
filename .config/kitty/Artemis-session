@@ -1,7 +1,7 @@
 layout vertical
 enabled_layouts vertical,stack,grid
 launch --title ar-btop fish -c 'sleep 1; btop; exec fish'
-launch --title zs-btop fish -c 'sleep 1; ssh 192.168.1.150 -t "btop; fish"; exec fish'
+launch --title zs-btop fish -c 'sleep 1; ssh 192.168.1.74 -t "btop; fish"; exec fish'
 launch fish -c 'sleep 1; cava; exec fish'
 resize_window shorter 20
 
@@ -16,8 +16,8 @@ resize_window shorter 20
 new_tab zeus
 layout vertical
 enabled_layouts vertical,stack,grid
-launch fish -c 'sleep 1; ssh 192.168.1.150 -t "btop; fish"; exec fish'
-launch fish -c 'sleep 1; ssh 192.168.1.150; exec fish'
+launch fish -c 'sleep 1; ssh 192.168.1.74 -t "btop; fish"; exec fish'
+launch fish -c 'sleep 1; ssh 192.168.1.74; exec fish'
 launch fish -c 'sleep 1; cava; exec fish'
 resize_window shorter 20
 
