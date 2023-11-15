@@ -17,7 +17,7 @@ SETUVAR --export HYPRLAND_SHELL_EXIT:0
 SETUVAR --export KCFLAGS:\x2dOs\x20\x2dpipe\x20\x2dflto\x20\x2dmarch\x3dnative
 SETUVAR --export LANG:en_US\x2eUTF\x2d8
 SETUVAR --export LANGUAGE:en_US\x2eUTF\x2d8
-SETUVAR --export LC_ALL:\x1d
+SETUVAR --export LC_ALL:C\x2eUTF\x2d8
 SETUVAR --export LIBSEAT_BACKEND:logind
 SETUVAR --export MANGOHUD_CONFIG:fps_limit\x3d60
 SETUVAR --export NO_AT_BRIGDE:1
