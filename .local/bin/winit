@@ -7,25 +7,25 @@ set -gx HYPRLAND_SHELL_EXIT 0
 set -gx GTK_THEME Sweet-Dark
 
 
-set -gx XDG_SESSION_TYPE wayland
-set -gx XDG_CURRENT_DESKTOP Hyprland
-set -gx XDG_SESSION_DESKTOP Hyprland
+# set -gx XDG_SESSION_TYPE wayland
+# set -gx XDG_CURRENT_DESKTOP Hyprland
+# set -gx XDG_SESSION_DESKTOP Hyprland
 
-set -gx CLUTTER_BACKEND wayland
-set -gx GDK_BACKEND wayland
-set -gx SDL_VIDEODRIVER x11
+# set -gx CLUTTER_BACKEND wayland
+# set -gx GDK_BACKEND wayland,x11
+# set -gx SDL_VIDEODRIVER x11
 
-set -gx ELM_DISPLAY wl
-set -gx __GL_VRR_ALLOWED 0
-set -gx WLR_NO_HARDWARE_CURSORS 1
+# set -gx ELM_DISPLAY wl
+# set -gx __GL_VRR_ALLOWED 0
+# set -gx WLR_NO_HARDWARE_CURSORS 1
 
-set -gx QT_QPA_PLATFORM "wayland-egl;wayland;xcb"
-set -gx QT_WAYLAND_DISABLE_WINDOWDECORATION 1
-set -gx QT_QPA_PLATFORMTHEME qt5ct
-set -gx QT_AUTO_SCREEN_SCALE_FACTOR 1
+# set -gx QT_QPA_PLATFORM "wayland-egl;wayland;xcb"
+# set -gx QT_WAYLAND_DISABLE_WINDOWDECORATION 1
+# set -gx QT_QPA_PLATFORMTHEME qt5ct
+# set -gx QT_AUTO_SCREEN_SCALE_FACTOR 1
 
-set -gx _JAVA_AWT_WM_NONREPARENTING 1
-set -gx XCURSOR_SIZE 24
+# set -gx _JAVA_AWT_WM_NONREPARENTING 1
+# set -gx XCURSOR_SIZE 24
 
 # set -gx LIBVA_DRIVER_NAME nvidia
 # set -gx GBM_BACKEND nvidia
